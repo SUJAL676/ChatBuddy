@@ -1,7 +1,6 @@
 import 'package:chat_buddy/Widgets/group_chat_title.dart';
 import 'package:chat_buddy/firebase/group_auth.dart';
 import 'package:chat_buddy/screens/group_info.dart';
-import 'package:chat_buddy/screens/homepage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +30,7 @@ class _Group_chatState extends State<Group_chat> {
         title: const Text("CHATS" , style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
         actions: [
           IconButton(onPressed: (){
-            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>GroupIfo())) ;
+            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>GroupIfo(groupId: widget.groupid,))) ;
           }, icon: const Icon(Icons.info_outline))
         ],
       ),
@@ -39,6 +38,7 @@ class _Group_chatState extends State<Group_chat> {
       body: Stack(
         children: [
           Container(
+            margin: const EdgeInsets.only(bottom: 73),
             child: chats(widget.groupid),
           ),
 
@@ -108,7 +108,7 @@ chats(
         {
           if (snapshot.connectionState==ConnectionState.waiting)
           {
-            return Center(child: CircularProgressIndicator(),);
+            return const Center(child: CircularProgressIndicator(),);
           }
           else
             {
@@ -136,7 +136,7 @@ chats(
         }
       else
         {
-          return Center(child: Text(""),);
+          return const Center(child: Text(""),);
         }
     },
   );

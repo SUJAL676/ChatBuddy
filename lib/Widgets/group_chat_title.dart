@@ -10,34 +10,38 @@ class Group_Chat_Bubble extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.only(right: 6,top: 6.5 ,left: 6),
+      constraints: const BoxConstraints(
+        minWidth: 60,
+        maxWidth: 150,
+        // minHeight: 60,
+        // maxHeight: 100
+      ),
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.only(right: 6,top: 6.5 ,left: 6),
       height: 50,
       decoration: BoxDecoration(
-        color: Colors.deepOrangeAccent,
-        borderRadius: BorderRadius.circular(10)
+        color:isuser? Colors.deepOrangeAccent : Colors.redAccent,
+        borderRadius:isuser ?BorderRadius.circular(10).copyWith(bottomRight: const Radius.circular(0)) :
+        BorderRadius.circular(10).copyWith(bottomLeft: const Radius.circular(0))
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // Text(username , style: TextStyle(
-          //   color: Colors.white,
+          Text(username , style: const TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold),
+           ),
+
+          // RichText(
+          //     text: TextSpan(text: username,
+          //                    style: TextStyle(color: Colors.white,
+          //                                      decoration: TextDecoration.underline)),
           //
           //
           // ),
-          //   textAlign:isuser? TextAlign.left : TextAlign.start,),
 
-          RichText(
-              text: TextSpan(text: username,
-                             style: TextStyle(color: Colors.white,
-                                               decoration: TextDecoration.underline)),
-
-
-          ),
-
-          SizedBox(height: 2,),
-          Text(chat , style: TextStyle(
+          const SizedBox(height: 2,),
+          Text(chat , style: const TextStyle(
             color: Colors.white,
           ), textAlign:isuser? TextAlign.right : TextAlign.start
             ,),

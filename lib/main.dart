@@ -1,3 +1,4 @@
+import 'package:chat_buddy/screens/MainHomePage.dart';
 import 'package:chat_buddy/screens/homepage.dart';
 import 'package:chat_buddy/screens/login_screen.dart';
 import 'package:chat_buddy/screens/sign_up.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
             {
               if (snapshot.hasData)
                 {
-                  return HomePage();
+                  return MainHomePage();
                 }
               else if (snapshot.hasError)
                 {

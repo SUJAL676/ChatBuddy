@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Group_Auth
 {
   final FirebaseFirestore firebaseFirestore=FirebaseFirestore.instance;
+  final FirebaseAuth firebaseAuth=FirebaseAuth.instance;
 
   Future<String> create_group(String groupname , String uid , String name)
   async{
@@ -36,6 +38,26 @@ class Group_Auth
     }
 
     return result;
+
+  }
+
+  Future<String> bot_message()
+  async{
+    try{
+
+      await firebaseFirestore.collection("chats").doc(firebaseAuth.currentUser!.uid).set(
+        {
+          "usename" : "Sujal",
+          "chatList" : [0],
+        }
+      );
+      return "Sucess";
+    }
+    catch(err)
+    {
+      return "Error";
+    }
+
 
   }
 

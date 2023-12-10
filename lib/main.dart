@@ -7,6 +7,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'new/LoginScreen.dart';
+
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -58,7 +60,7 @@ class MyApp extends StatelessWidget {
             {
               Center(child: CircularProgressIndicator(),);
             }
-          return Login_Screen();
+          return LoginScreen();
         },
       )
     );

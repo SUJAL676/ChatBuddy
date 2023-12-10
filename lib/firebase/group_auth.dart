@@ -47,7 +47,7 @@ class Group_Auth
 
       await firebaseFirestore.collection("chats").doc(firebaseAuth.currentUser!.uid).set(
         {
-          "usename" : "Sujal",
+          "usename" : "rocks",
           "chatList" : [0],
         }
       );

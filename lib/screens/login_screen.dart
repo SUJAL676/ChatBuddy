@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:chat_buddy/Widgets/colors.dart';
 import 'package:chat_buddy/Widgets/text_field.dart';
 
+import 'MainHomePage.dart';
+
 class Login_Screen extends StatefulWidget {
   const Login_Screen({Key? key}) : super(key: key);
 
@@ -61,7 +63,7 @@ class _Login_ScreenState extends State<Login_Screen> {
 
                   if(a=="Sucess")
                   {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainHomePage()));
                   }
                   else
                     {

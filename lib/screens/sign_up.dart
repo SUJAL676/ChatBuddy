@@ -67,20 +67,20 @@ class _Sign_UpState extends State<Sign_Up> {
                   ElevatedButton(onPressed: () async {
 
                     {
-                      setState(() {_isLoading=true;});
-
-                      String a =await Auth().signUp(email: email.text, pass: pass.text, username: username.text, profilePic: " ", group: []);
-
-                      setState(() {_isLoading=false;});
-
-                      if (a=="Sucess")
-                      {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> HomePage()));
-                      }
-                      else
-                      {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(a.toString())));
-                      }
+                      // setState(() {_isLoading=true;});
+                      //
+                      // String a =await Auth().signUp(email: email.text, pass: pass.text, username: username.text, profilePic: " ", group: []);
+                      //
+                      // setState(() {_isLoading=false;});
+                      //
+                      // if (a=="Sucess")
+                      // {
+                      //   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> HomePage()));
+                      // }
+                      // else
+                      // {
+                      //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(a.toString())));
+                      // }
                     }
 
                   },

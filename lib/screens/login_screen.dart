@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:chat_buddy/Widgets/colors.dart';
 import 'package:chat_buddy/Widgets/text_field.dart';
 
-import 'MainHomePage.dart';
+import '../new/screens/MainHomePage.dart';
 
 class Login_Screen extends StatefulWidget {
   const Login_Screen({Key? key}) : super(key: key);

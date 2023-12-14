@@ -1,7 +1,6 @@
-import 'dart:convert';
-
-import 'package:chat_buddy/firebase/group_auth.dart';
-import 'package:chat_buddy/new/add_person.dart';
+import 'package:chat_buddy/new/screens/add_person.dart';
+import 'package:chat_buddy/new/widgets/homeTitle.dart';
+import 'package:chat_buddy/new/widgets/statusTile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -43,6 +42,7 @@ class _MainHomePageState extends State<MainHomePage> {
                     child: appbar(),
                   ),
                   status(),
+                  // SizedBox(height: 30,),
                   chat(context)
                 ],
               ),
@@ -85,7 +85,32 @@ class _MainHomePageState extends State<MainHomePage> {
     return  Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
       width: double.infinity,
-      height: 100,
+      height: 150,
+      child: Expanded(
+        child: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('status').doc(FirebaseAuth.instance.currentUser!.uid)
+              .snapshots(),
+          builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot<Map<String,dynamic>>> snapshot)
+          {
+            if(snapshot.connectionState==ConnectionState.waiting)
+            {
+              return Center(child: Text(""),);
+            }
+            else{
+              // print(snapshot.data.docs());
+              print(snapshot.data!["username"]);
+              return ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: snapshot.data!["statusList"].length,
+                itemBuilder: (context,index)
+                {
+                  return StatusTile(map: snapshot.data!["statusList"][index],index: index,);
+                },
+              );
+            }
+          },
+        ),
+      ),
       // color: Colors.white,
     );
   }
@@ -93,7 +118,7 @@ class _MainHomePageState extends State<MainHomePage> {
   chat(BuildContext context)
   {
     return Expanded(child: Container(
-      padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10).copyWith(top: 30),
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -117,7 +142,7 @@ class _MainHomePageState extends State<MainHomePage> {
               itemCount: snapshot.data!["chatlist"].length,
               itemBuilder: (context,index)
               {
-                return Text("");
+                return homeTitle(map: snapshot.data!["chatlist"][index]);
               },
             );
           }

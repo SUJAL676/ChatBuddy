@@ -1,3 +1,4 @@
+import 'package:chat_buddy/new/widgets/searchTile.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -61,7 +62,14 @@ class _Add_PersonState extends State<Add_Person> {
                     ),
                     Align(
                       alignment: Alignment.centerRight,
-                      child: SvgPicture.asset("asset/cross.svg"),
+                      child: GestureDetector(
+                          onTap: (){
+                            controller.clear();
+                            setState(() {
+                              isbool=false;
+                            });
+                          },
+                          child: SvgPicture.asset("asset/cross.svg")),
                     )
                   ],
                 ),
@@ -79,6 +87,7 @@ class _Add_PersonState extends State<Add_Person> {
   {
     return Expanded(
       child: Container(
+        width: double.infinity,
         margin: EdgeInsets.only(top: 20),
         child: isbool ? FutureBuilder(
             future: FirebaseFirestore.instance.collection("user").where('username',isEqualTo: controller.text).get(),
@@ -95,7 +104,7 @@ class _Add_PersonState extends State<Add_Person> {
                     itemBuilder: (context,index)
                     {
                       var snaps=(snap.data! as dynamic).docs[index];
-                      return Text(snaps["email"]);
+                      return SearchTile(profilepic: snaps["profilepic"], username: snaps["username"], bio: snaps["bio"], uid: snaps["uid"],);
                     },
                   );
                 }

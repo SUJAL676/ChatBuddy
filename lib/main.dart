@@ -1,4 +1,4 @@
-import 'package:chat_buddy/screens/MainHomePage.dart';
+import 'package:chat_buddy/new/screens/MainHomePage.dart';
 import 'package:chat_buddy/screens/homepage.dart';
 import 'package:chat_buddy/screens/login_screen.dart';
 import 'package:chat_buddy/screens/sign_up.dart';
@@ -7,7 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'new/LoginScreen.dart';
+import 'new/screens/LoginScreen.dart';
 
 Future main() async{
   WidgetsFlutterBinding.ensureInitialized();

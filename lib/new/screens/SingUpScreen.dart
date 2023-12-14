@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:chat_buddy/firebase/Auth.dart';
-import 'package:chat_buddy/screens/MainHomePage.dart';
+import 'package:chat_buddy/new/screens/MainHomePage.dart';
 import 'package:chat_buddy/utils/imagePicker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
